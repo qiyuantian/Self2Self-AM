@@ -1,22 +1,21 @@
 # DeepDTI Tutorial
 
-![MUnet](https://github.com/qiyuantian/Self2Self-AM/tree/main/imgs/MUnet.png)
+![MUnet](https://github.com/qiyuantian/Self2Self-AM/blob/main/imgs/MUnet.png)
 **Modified U-Net (MU-Net).** MU-Net is modified from U-Net. All max pooling layers and up-sampling layers are removed. The number of kernels is constant across all layers. The input is a noisy image volume while the output is the residual volume between the input and the high-signal-to-noise ratio (SNR) target image volume (i.e., the noise). Network parameter _k_ = 128 is adopted in this study (~9.3 million parameters).
 
-![MDUnet](https://github.com/qiyuantian/Self2Self-AM/tree/main/imgs/MDUnet.png)
+![MDUnet](https://github.com/qiyuantian/Self2Self-AM/blob/main/imgs/MDUnet.png)
 **Modified U-Net with dropout (MDU-Net).** MU-Net is modified from U-Net. The number of kernels is _k_ during the encoding and 2_k_ during the decoding. The input is a noisy image volume with 10% randomly selected voxels replaced by the average of their six neighbouring voxels (i.e., average masking (AM)), while the output is another noisy image volume with the same selected 10% voxels with raw image intensities, on which losses are computed. Network parameter _k_ = 128 is adopted in this study (~5.6 million parameters).
 
-![imgresult](https://github.com/qiyuantian/Self2Self-AM/tree/main/imgs/imgresult.png)
+![imgresult](https://github.com/qiyuantian/Self2Self-AM/blob/main/imgs/imgresult.png)
 **Image results.** Exemplar image slices of a representative subject from Standard-MPRAGE data (a, i), raw Wave-MPRAGE data (a, ii), and the raw Wave-MPRAGE data denoised by BM4D (a, iii), AONLM (a, iv), supervised denoising using a MU-Net trained on simulation data from HCP subjects (a, v) and the same  MU-Net fine-tuned  on  empirical  data from another subject (a, vi), as well as Self2Self-AM denoising using a MDU-Net trained on simulation data from a HCP subject (c, i), a MDU-Net trained on empirical data from another subject (c, ii), and the same MDU-Net from another subject fine-tuned on the data of the subject for denoising for 1 epochs (c, iii), 5 epochs (c, iv) and 10 epochs (c, v), and a randomly initiated MDU-Net on the data of the subject for denoising for 100 epochs (c, vi), with magnified views of basal ganglia (b, d). The structural similarity index (SSIM) compared to Standard-MPRAGE images and whole-brain averaged vertex-wise gray–white matter boundary sharpness are listed to quantify image quality. The arrowheads highlight the claustrum (magenta) and caudolenticular gray bridges (blue) with fine textures.
 
-![imgresulttable](https://github.com/qiyuantian/Self2Self-AM/tree/main/imgs/imgresulttable.png)
+![imgresulttable](https://github.com/qiyuantian/Self2Self-AM/blob/main/imgs/imgresulttable.png)
 **Image quality quantification.** The group means (± group standard deviations) of the structural similarity index (SSIM) of the raw and denoised Wave-CAIPI images compared to Standard-MPRAGE images as well as the whole-brain averaged vertex-wise gray–white matter boundary sharpness from all 10 subjects. The red color represents the highest metrics while the green color represents the second highest metrics.
 ## Quick start
 install packages in requirements.txt
 Run:
 python s_S2S_cnnTrainS2s0.9Blur1x1.py
 python s_S2S_cnnApplyS2sSw1_0.9Blur1x1.py
-The trained MDUNet has been included in this repository.
 ## s_S2S_cnnTrainS2s0.9Blur1x1.py
 
 Step-by-step Python tutorial for training the MDUnet in S2S-am.
